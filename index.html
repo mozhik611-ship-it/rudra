@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rudra Home Stay — Luxury Stay</title>
+  <meta name="description" content="Rudra Home Stay - Luxury boutique homestay with premium suites, and curated experiences. Book direct for best rates." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0b;
+      --panel:#111111;
+      --ink:#f2f2f2;
+      --muted:#bdbdbd;
+      --gold:#c9a052;
+      --gold-2:#e1c37a;
+      --gold-3:#9a7a3f;
+      --shadow:0 20px 50px rgba(0,0,0,.55);
+      --radius:18px;
+      --gap: clamp(14px, 2.2vw, 28px);
+      --phone: "9043035312";
+    }
+    *{box-sizing:border-box; margin:0; padding:0}
+    html,body{background:var(--bg); color:var(--ink); font-family:Poppins, sans-serif; scroll-behavior:smooth}
+    img{max-width:100%; display:block}
+    a{color:inherit; text-decoration:none}
+
+    .container{
+      width:min(1200px,92%); 
+      margin-inline:auto}
+
+    /* ===== Header ===== */
+
+    header{
+      position:sticky; 
+      top:0; 
+      z-index:60; 
+      backdrop-filter:saturate(160%) blur(8px); 
+      background:linear-gradient(180deg, rgba(10,10,10,.85), rgba(10,10,10,.65)); 
+      border-bottom:3px solid rgba(201,160,82,.12); 
+      box-shadow:0 2px 20px rgba(0,0,0,.6)
+    }
+
+    .nav{
+      display:flex; 
+      align-items:center; 
+      justify-content:space-between; 
+      gap:var(--gap); 
+      padding:22px 0; 
+      transition:.3S}
+
+    .brand{
+      display:flex; 
+      align-items:center; 
+      gap:14px
+    }
+    .crest{
+      width:72px; 
+      aspect-ratio:1; 
+      border-radius:14px; 
+      display:grid; 
+      place-items:center; 
+      font-size:5vmin;
+      color:#111; 
+      background:conic-gradient(from 10deg, var(--gold-2), var(--gold), var(--gold-3), var(--gold-2)); 
+      box-shadow:0 10px 40px rgba(201,160,82,.35)
+    }
+    .crest:hover{transform:scale(1.06)}
+
+    .brand-name{
+      font-family:"Playfair Display", serif; 
+      font-weight:700; 
+      letter-spacing:.9px; 
+      font-size:clamp(22px,3.4vw,40px); 
+      color:var(--ink); 
+      text-shadow:0 0 12px rgba(201,160,82,.32)
+    }
+
+    .nav-links{
+      display:flex; 
+      gap:24px; 
+      align-items:center
+    }
+
+    .nav-links a{
+      position:relative; 
+      font-size:16px; 
+      color:var(--muted); 
+      padding:8px 4px
+    }
+
+    .nav-links a:hover{
+      color:var(--gold-2)
+    }
+
+    .nav-links a::after{
+      content:""; position:absolute; 
+      left:0; bottom:-6px; 
+      width:0%; 
+      height:3px; 
+      background:linear-gradient(90deg,var(--gold),var(--gold-2)); transition:.3s
+    }
+
+    .nav-links a:hover::after{width:100%}
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--gold),var(--gold-2)); color:#111; border:none; font-weight:700; padding:10px 18px; border-radius:12px; font-size:15px; box-shadow:0 6px 30px rgba(201,160,82,.18)}
+
+    /* Mobile menu */
+    #menu-toggle{display:none}
+    .hamburger{display:none; width:48px; height:48px; border-radius:12px; border:1px solid rgba(201,160,82,.15); background:#121212; place-items:center}
+    .hamburger span{width:26px; height:2px; background:var(--ink); display:block; position:relative}
+    .hamburger span::before,.hamburger span::after{content:""; position:absolute; left:0; right:0; height:2px; background:var(--ink)}
+    .hamburger span::before{top:-7px}
+    .hamburger span::after{top:7px}
+
+    @media (max-width:900px){
+      .nav-links{position:fixed; inset:90px 16px auto 16px; background:#0f0f0f; border:1px solid rgba(201,160,82,.08); border-radius:14px; box-shadow:var(--shadow); padding:18px; display:grid; gap:12px; transform:translateY(-8px); opacity:0; pointer-events:none; transition:.18s ease}
+      #menu-toggle:checked ~ .nav-links{transform:translateY(0); opacity:1; pointer-events:auto}
+      .hamburger{display:grid}
+      .nav .btn-primary{display:none}
+    }
+
+    /* ===== Hero (Parallax) ===== */
+    .hero{
+      position:relative; 
+      min-height:100vh; 
+      display:grid; 
+      align-items:end; 
+      overflow:hidden; 
+      border-bottom:1px solid rgba(201,160,82,.06)
+    }
+
+    .hero img.bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      filter:brightness(0.8) contrast(1.1);
+      z-index:0;
+      will-change:transform;
+    }
+
+    .hero::after{
+      content:""; 
+      position:absolute; 
+      inset:0; 
+      background:linear-gradient(180deg, rgba(0,0,0,.2), rgba(0,0,0,.8));
+      z-index:1;
+    }
+
+    .particles{
+      position:absolute;
+      inset:0;
+      z-index:2;
+      overflow:hidden;
+      pointer-events:none
+    }
+
+    .spark{
+      position:absolute;
+      width:4px;
+      height:4px;
+      background:radial-gradient(circle,var(--gold-2),transparent 70%);
+      border-radius:50%;
+      animation:float 10s linear infinite;
+      opacity:0.8;
+    }
+
+    @keyframes float{
+      from{transform:translateY(100vh) scale(0.5);opacity:0;}
+      20%{opacity:1;}
+      to{transform:translateY(-10vh) scale(1.2);opacity:0;}
+    }
+
+    .hero .content{
+      position:relative; 
+      z-index:3;
+      text-align:center; 
+      padding: clamp(28px, 6vw, 70px) 0 60px}
+
+    .eyebrow{color:var(--gold-2); letter-spacing:.32em; text-transform:uppercase; font-size:12px}
+
+    h1{font-family:"Playfair Display", serif; font-size:clamp(32px,5.6vw,72px); line-height:1.02; margin:8px 0}
+    .h1-gold{color:var(--gold-2)}
+    .tagline{color:#eaeaea; font-size:18px; margin-top:6px}
+    .tamil{margin-top:8px; color:var(--gold); font-weight:600}
+
+    /* Booking card */
+    .booking{margin-top:22px; background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)); border:1px solid rgba(201,160,82,.12); border-radius:16px; padding:12px; backdrop-filter:blur(6px); box-shadow:0 18px 50px rgba(0,0,0,.6); display:grid; grid-template-columns:repeat(5,1fr); gap:10px}
+    .booking label{font-size:12px; color:var(--muted)}
+    .booking input, .booking select{width:100%; padding:10px 12px; border-radius:10px; background:#0e0e0e; border:1px solid rgba(201,160,82,.06); color:var(--ink);}
+    .booking .btn-primary{grid-column:span 1}
+    @media (max-width:900px){.booking{grid-template-columns:1fr 1fr}.booking .btn-primary{grid-column:1/-1}}
+
+    /* ===== Sections ===== */
+    section{padding: clamp(36px, 6vw, 80px) 0}
+    .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:var(--gap); margin-bottom:22px}
+    h2{font-family:"Playfair Display", serif; font-size:clamp(22px,3.2vw,36px); margin:0}
+    p.lead{color:var(--muted); margin:0}
+
+    /* About */
+    .about{display:grid; grid-template-columns:6fr 4fr; gap:var(--gap)}
+    .about .panel{background:linear-gradient(180deg,#0f0f0f,#111111); border:1px solid rgba(201,160,82,.06); border-radius:14px; padding:20px}
+    .about .panel p{color:var(--muted); line-height:1.7}
+    @media (max-width:1100px){.about{grid-template-columns:1fr}}
+
+    /* Rooms */
+    .grid{display:grid; gap:var(--gap)}
+    .rooms{grid-template-columns:repeat(3,1fr)}
+    .card-room{background:linear-gradient(180deg,#0f0f0f,#131313); border:1px solid rgba(201,160,82,.06); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; transition:transform .3s ease}
+    .card-room:hover{transform:translateY(-8px)}
+    .card-room .media{aspect-ratio:40/20; position:relative}
+    .card-room .media img{width:100%; height:100%; object-fit:cover}
+    .card-room .body{padding:20px}
+    .pill{display:inline-block; font-size:13px; color:#111; background:linear-gradient(135deg,var(--gold),var(--gold-2)); padding:6px 10px; border-radius:999px}
+    .price{margin-left:auto; font-weight:700; color:var(--gold-2)}
+
+/* ===== 3 Video + Price Cards Section ===== */
+
+.vp3-section {
+  padding: 60px 0;
+}
+
+.vp3-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.vp3-card {
+  background: linear-gradient(180deg, #141414, #0b0b0b);
+  border: 1px solid rgba(201,160,82,0.15);
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 16px 50px rgba(0,0,0,0.45);
+  text-align: center;
+  transition: .3s ease;
+}
+
+.vp3-card:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.vp3-card video {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+  margin-bottom: 14px;
+}
+
+.vp3-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: var(--gold-2);
+}
+
+.vp3-price {
+  background: rgba(201,160,82,0.1);
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 20px;
+  margin-bottom: 14px;
+  border-left: 4px solid var(--gold-2);
+  color: var(--gold-2);
+}
+
+.vp3-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 14px 0;
+}
+
+.vp3-card ul li {
+  color: #bdbdbd;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.vp3-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-2));
+  color: #111;
+  text-decoration: none;
+  box-shadow: 0 10px 26px rgba(201,160,82,0.25);
+  transition: .2s;
+}
+
+.vp3-btn:hover {
+  transform: scale(1.06);
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .vp3-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+    /* Amenities */
+    .amenities{grid-template-columns:repeat(6,1fr)}
+    .amen{background:#0f0f0f; border:1px solid rgba(201,160,82,.04); border-radius:12px; padding:14px; display:grid; place-items:center; text-align:center}
+    .amen .ico{font-size:22px}
+    .amen small{color:var(--muted)}
+
+    /* Gallery */
+    .hscroll {
+  display: flex;
+  gap: 15px;
+  overflow-x: auto;
+  padding: 10px;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+}
+
+.hscroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.hscroll::-webkit-scrollbar-thumb {
+  background: #777;
+  border-radius: 10px;
+}
+
+.hscroll img, 
+.hscroll video {
+  width: 260px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.20);
+  transition: .3s;
+}
+
+.hscroll img:hover,
+.hscroll video:hover {
+  transform: scale(1.06);
+}
+   /* ===== House Rules Section ===== */
+
+.rules-section {
+  padding: 60px 0;
+}
+
+.rules-title {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: var(--gold-2);
+  text-align: center;
+}
+
+.rules-card {
+  background: linear-gradient(180deg, #131313, #0c0c0c);
+  border: 1px solid rgba(201,160,82,0.20);
+  padding: 28px;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+}
+
+.rules-card h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: var(--gold);
+  font-family: "Playfair Display", serif;
+}
+
+.rules-card ul {
+  margin: 0;
+  padding: 0 0 0 18px;
+}
+
+.rules-card ul li {
+  color: var(--muted);
+  margin-bottom: 8px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rules-card {
+    padding: 20px;
+  }
+  .rules-title {
+    font-size: 26px;
+  }
+}
+
+
+  
+
+    /* Contact */
+    .contact{display:grid; grid-template-columns:6fr 4fr; gap:var(--gap)}
+    form{background:#0f0f0f; border:1px solid rgba(201,160,82,.04); border-radius:12px; padding:16px}
+    input, textarea{width:100%; padding:10px 12px; border-radius:10px; background:#0e0e0e; border:1px solid rgba(201,160,82,.06); color:var(--ink)}
+    textarea{min-height:120px}
+
+    /* Footer */
+    footer{padding:36px 0 60px; color:var(--muted)}
+    .gold-line{height:1px; width:100%; background:linear-gradient(90deg, rgba(201,160,82,0), var(--gold), rgba(201,160,82,0))}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease}
+    .reveal.show{opacity:1; transform:none}
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .rooms{grid-template-columns:repeat(2,1fr)}
+      .amenities{grid-template-columns:repeat(4,1fr)}
+      .gallery{grid-template-columns:1fr 1fr}
+      .contact{grid-template-columns:1fr}
+    }
+    @media (max-width:700px){
+      .rooms{grid-template-columns:1fr}
+      .amenities{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="crest"><img src="image/sivlogo.JPG"></div>
+        <div class="brand-name">Rudra Home Stay</div>
+      </div>
+
+      <input type="checkbox" id="menu-toggle" />
+      <label for="menu-toggle" class="hamburger"><span></span></label>
+
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#rooms">Rooms</a>
+        <a href="#amenities">Amenities</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn-primary" href="https://wa.me/9043035312" target="_blank">💬 WhatsApp</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+
+    <section class="hero" aria-label="Luxury stay divine background">
+
+    <!-- ✅ Background image inside HTML -->
+
+    <img src="image/siva.JPG" alt="Sivan Sculpture" class="bg" id="heroBg">
+    <div class="bg" id="heroBg"></div>
+
+    <!-- ✨ Floating sparkles -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Hero text + form -->
+
+    <div class="container content">
+      <div class="eyebrow">A Luxury Retreat</div>
+      <h1>Rudra <span class="h1-gold">Home Stay</span></h1>
+      <div class="tagline">Experience timeless elegance & tranquil privacy</div>
+      <div class="tamil">அருமை மற்றும் அமைதி – உங்கள் பிரத்தியேக தங்கும் இடம்</div>
+
+      <form class="booking" action="#contact" method="get">
+        <div>
+          <label for="checkin">Check-in</label>
+          <input id="checkin" type="date" required>
+        </div>
+        <div>
+          <label for="checkout">Check-out</label>
+          <input id="checkout" type="date" required>
+        </div>
+        <div>
+          <label for="guests">Guests</label>
+          <select id="guests" required>
+            <option>2 Adults</option>
+            <option>3 Guests</option>
+            <option>4 Guests</option>
+            <option>5+ Guests</option>
+          </select>
+        </div>
+        <div>
+          <label for="room">Suite</label>
+          <select id="room" required>
+            <option>Deluxe Room</option>
+            <option>Premium Cottage</option>
+            <option>Family Suite</option>
+          </select>
+        </div>
+        <button class="btn-primary" type="submit">Check Availability</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="reveal">
+    <div class="container about">
+      <div class="panel">
+        <h2>Elegance, Privacy & Warm Hospitality</h2>
+        <p class="lead">Rudra Home Stay is a boutique homestay offering a blend of contemporary comfort and classic charm. Enjoy private suites, a serene garden, personalized dining and attentive hosts who make your stay memorable.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms -->
+  <section id="rooms" class="reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2>Suites & Cottages</h2>
+        <p class="lead">Handpicked spaces with refined details.</p>
+      </div>
+      <div class="grid rooms">
+        <article class="card-room">
+          <div class="media"><img src="image/sivan4.JPG" alt="Deluxe room"></div>
+          <div class="body">
+            <div style="display:flex; align-items:center; gap:10px; justify-content:space-between">
+              <span class="pill">Non AC Room</span>
+              <span class="price">₹2000 / day</span>
+            </div>
+            <p style="color:var(--muted); margin-top:8px">King bed • Ensuite </p>
+          </div>
+        </article>
+        <article class="card-room">
+          <div class="media"><img src="image/sivan16.JPG" alt="Cottage"></div>
+          <div class="body">
+            <div style="display:flex; align-items:center; gap:10px; justify-content:space-between">
+              <span class="pill">AC Room</span>
+              <span class="price">₹3500 /day </span>
+            </div>
+            <p style="color:var(--muted); margin-top:8px"> King bed . ensuite</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="video-price-3" class="vp3-section">
+  <div class="container vp3-grid">
+
+    <!-- CARD 1 -->
+    <div class="vp3-card">
+      <video src="image/sivanvi3.MP4" controls></video>
+      <h3>Ground Floor 3BHK</h3>
+      <div class="vp3-price">₹15,000</div>
+      <ul>
+        <li>3BHK</li>
+        <li>AC • WiFi • TV</li>
+        <li>Perfect for Families</li>
+        <li>Minimum 10 members (Adult)</li>
+      </ul>
+      <a href="https://wa.me/9043035312" target="_blank" class="vp3-btn">Book Now</a>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="vp3-card">
+      <video src="image/sivanvi1.MP4" controls></video>
+      <h3>1St Floor 2BHK</h3>
+      <div class="vp3-price">₹10,000</div>
+      <ul>
+        <li>Private Sit-Out</li>
+        <li>Perfect for Families</li>
+        <li>Minimum 10 members (Adult)</li>
+      </ul>
+      <a href="https://wa.me/9043035312" target="_blank" class="vp3-btn">Book Now</a>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="vp3-card">
+      <video src="image/sivanvi2.MP4" controls></video>
+      <h3>1St Floor 2BHK</h3>
+      <div class="vp3-price">₹10,000 / Night</div>
+      <ul>
+       
+        <li>Private Sit-Out</li>
+        <li>Perfect for Families</li>
+        <li>Minimum 10 members (Adult)</li>
+      </ul>
+      <a href="https://wa.me/9043035312" target="_blank" class="vp3-btn">Book Now</a>
+    </div>
+
+  </div>
+</section>
+
+
+
+  <!-- Amenities -->
+  <section id="amenities" class="reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2>Signature Amenities</h2>
+        <p class="lead">Curated comforts for a flawless stay.</p>
+      </div>
+      <div class="grid amenities">
+        <div class="amen">
+  <div class="ico">📶</div>
+  <div>Free Wi-Fi</div>
+  <small>High-speed internet 24/7</small>
+</div>
+
+<div class="amen">
+  <div class="ico">🍱</div>
+  <div>Food Options</div>
+  <small>Zomato + outside food allowed</small>
+</div>
+
+<div class="amen">
+  <div class="ico">🅿️</div>
+  <div>Parking</div>
+  <small>2-wheelers & 4-wheelers</small>
+</div>
+
+<div class="amen">
+  <div class="ico">⛰️</div>
+  <div>Mountain View</div>
+  <small>Beautiful scenic rooms</small>
+</div>
+
+<div class="amen">
+  <div class="ico">🛡️</div>
+  <div>24/7 Safety</div>
+  <small>CCTV & secure entrance</small>
+</div>
+
+<div class="amen">
+  <div class="ico">🧯</div>
+  <div>Fire Safety</div>
+  <small>Extinguishers on every floor</small>
+</div>
+
+<div class="amen">
+  <div class="ico">⛑️</div>
+  <div>First Aid</div>
+  <small>Emergency medical kit</small>
+</div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2>Gallery</h2>
+        <p class="lead">Glimpses of golden hours.</p>
+      </div>
+      <div class="hscroll">
+
+        <!-- VIDEO -->
+  <video src="image/sivanvi3.MP4" controls></video>
+
+  <img src="image/siva.JPG">
+  <img src="image/sivan1.JPG">
+  <img src="image/sivan2.JPG">
+  <img src="image/sivan3.JPG">
+  <img src="image/sivan4.JPG">
+
+  <!-- VIDEO -->
+  <video src="image/sivanvi1.MP4" controls></video>
+
+  <img src="image/sivan5.JPG">
+  <img src="image/sivan6.JPG">
+  <img src="image/sivan7.JPG">
+  <img src="image/sivan8.JPG">
+  <img src="image/sivan9.JPG">
+
+  <!-- VIDEO -->
+  <video src="image/sivanvi2.MP4" controls></video>
+
+  <img src="image/sivan10.JPG">
+  <img src="image/sivan11.JPG">
+  <img src="image/sivan12.JPG">
+  <img src="image/sivan13.JPG">
+  <img src="image/sivan14.JPG">
+
+  <img src="image/sivan15.JPG">
+  <img src="image/sivan16.JPG">
+  <img src="image/sivan17.JPG">
+  <img src="image/sivan18.JPG">
+  <img src="image/sivan19.JPG">
+  <img src="image/sivan20.JPG">
+
+  <img src="image/sivan21.JPG">
+  <img src="image/sivan22.JPG">
+  <img src="image/sivan23.JPG">
+  <img src="image/sivan24.JPG">
+  <img src="image/sivan25.JPG">
+
+</div>
+    </div>
+  </section>
+
+  
+
+  <!-- Location -->
+  <section id="location" class="reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2>Find Us</h2>
+        <p class="lead">Private location • Close to city</p>
+      </div>
+      <iframe class="map" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d273.5782364585356!2d79.07252619837023!3d12.267585665227928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sin!4v1763464534849!5m2!1sen!2sin" style="width:100%; height:360px; border-radius:12px; border:0; box-shadow:var(--shadow)"></iframe>
+
+    </div>
+  </section>
+
+  <section id="house-rules" class="rules-section">
+  <div class="container">
+
+    <h2 class="rules-title">House Rules & Information</h2>
+
+    <div class="rules-card">
+
+      <h3>🏠 Must Read Rules</h3>
+      <ul>
+        <li>Primary Guest should be at least 18 years of age.</li>
+      </ul>
+
+      <h3>👤 Guest Profile</h3>
+      <ul>
+        <li>Unmarried couples are not allowed.</li>
+        <li>Primary guest should be at least 18 years old.</li>
+      </ul>
+
+      <h3>🪪 ID Proof Related</h3>
+      <ul>
+        <li>Passport, Aadhaar, Driving License and Govt. ID are accepted as valid ID proof(s).</li>
+      </ul>
+
+      <h3>🚫 Smoking / Alcohol</h3>
+      <ul>
+        <li>Alcohol consumption is not allowed within the property premises.</li>
+        <li>Smoking is not allowed within the premises.</li>
+      </ul>
+
+      <h3>🐾 Pet Policy</h3>
+      <ul>
+        <li>Pets are not allowed.</li>
+        <li>There are no pets living on the property.</li>
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Contact -->
+  <section id="contact" class="reveal">
+    <div class="container">
+      <div class="section-head">
+        <h2>Contact & Booking</h2>
+        <p class="lead">Call/WhatsApp for the best offer. தமிழில் பேசலாம்.</p>
+      </div>
+      <div class="contact">
+        <form action="" method="post" enctype="text/plain">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px">
+            <input type="text" name="name" placeholder="Your name" required>
+            <input type="tel" name="phone" placeholder="Phone / WhatsApp" value="9043035312" required>
+          </div>
+          
+          <div style="margin-top:10px"><textarea name="message" placeholder="Dates, number of guests, special requests" required></textarea></div>
+          <div style="margin-top:12px"><button class="btn-primary" type="submit">Send Enquiry</button></div>
+        </form>
+
+        <div style="display:grid; align-content:start; gap:14px">
+          <div style="background:#0f0f0f; border:1px solid rgba(201,160,82,.04); border-radius:12px; padding:14px">
+            <div style="display:flex; gap:10px; align-items:center; justify-content:space-between">
+              <div>
+                <div style="font-weight:700">Direct Booking Benefits</div>
+                <ul style="color:var(--muted); margin-top:8px; line-height:1.6">
+                  <li>Best rate guaranteed</li>
+        
+                  <li>Late checkout (subject to availability)</li>
+                </ul>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:8px">
+                <a class="btn-primary" href="https://wa.me/9043035312" target="_blank">💬 WhatsApp</a>
+                <a style="padding:10px 12px; border-radius:10px; border:1px solid rgba(201,160,82,.06); display:inline-block; text-align:center" href="tel:9043035312">📞 9043035312</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="gold-line" style="margin-bottom:14px"></div>
+      <div style="display:flex; gap:12px; align-items:center; justify-content:space-between; flex-wrap:wrap; color:var(--muted)">
+        <div>© <span id="year"></span> Rudra Home Stay • </div>
+        <div>Made with ❤️</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Parallax hero
+    const heroBg = document.getElementById('heroBg');
+    window.addEventListener('scroll',()=>{heroBg.style.transform=`translateY(${window.scrollY*0.25}px)`},{passive:true});
+
+    // Floating sparkles ✨
+    const particleContainer=document.getElementById('particles');
+    for(let i=0;i<30;i++){
+      const spark=document.createElement('div');
+      spark.classList.add('spark');
+      spark.style.left=Math.random()*100+'%';
+      spark.style.animationDelay=Math.random()*8+'s';
+      spark.style.animationDuration=8+Math.random()*5+'s';
+      particleContainer.appendChild(spark);
+    }
+
+    // Reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('show');
+          observer.unobserve(e.target);
+        }
+      })
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Shrink header on scroll
+    const nav = document.querySelector('header .nav');
+    window.addEventListener('scroll', ()=>{
+      if(window.scrollY>60){
+        nav.style.padding='12px 0';
+      } else {
+        nav.style.padding='22px 0';
+      }
+    }, {passive:true});
+  </script>
+</body>
+</html>

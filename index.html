@@ -196,6 +196,79 @@
     .booking .btn-primary{grid-column:span 1}
     @media (max-width:900px){.booking{grid-template-columns:1fr 1fr}.booking .btn-primary{grid-column:1/-1}}
 
+    /* ===== Check-in / Check-out Section ===== */
+
+.time-section{
+  padding: 50px 0;
+}
+
+.time-card{
+  background: linear-gradient(180deg,#131313,#090909);
+  border-radius: 18px;
+  border: 1px solid rgba(201,160,82,0.18);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.55);
+  padding: 24px 22px;
+}
+
+.time-title h2{
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  color: var(--gold-2);
+  margin-bottom: 4px;
+}
+
+.time-title p{
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.time-grid{
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+}
+
+.time-box{
+  background: rgba(255,255,255,0.03);
+  border-radius: 14px;
+  border: 1px solid rgba(201,160,82,0.15);
+  padding: 14px 16px;
+}
+
+.time-box .label{
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: .15em;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+
+.time-box .time{
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--gold-2);
+}
+
+.time-box .time span{
+  font-size: 16px;
+}
+
+.time-box small{
+  display:block;
+  margin-top:4px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* mobile */
+@media (max-width: 700px){
+  .time-grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+
     /* ===== Sections ===== */
     section{padding: clamp(36px, 6vw, 80px) 0}
     .section-head{display:flex; align-items:flex-end; justify-content:space-between; gap:var(--gap); margin-bottom:22px}
@@ -508,6 +581,34 @@
     </div>
   </section>
 
+  <section id="timings" class="time-section">
+  <div class="container time-card">
+
+    <div class="time-title">
+      <h2>Stay Timings</h2>
+      <p>Please note our standard check-in & check-out timings.</p>
+    </div>
+
+    <div class="time-grid">
+
+      <div class="time-box">
+        <div class="label">Check-in</div>
+        <div class="time">12:00 <span>AM</span></div>
+        <small>Midnight check-in available</small>
+      </div>
+
+      <div class="time-box">
+        <div class="label">Check-out</div>
+        <div class="time">12:00 <span>AM</span></div>
+        <small>Midnight check-out</small>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
   <!-- About -->
   <section id="about" class="reveal">
     <div class="container about">
@@ -531,7 +632,7 @@
           <div class="body">
             <div style="display:flex; align-items:center; gap:10px; justify-content:space-between">
               <span class="pill">Non AC Room</span>
-              <span class="price">₹2000 / day</span>
+              <span class="price">₹2500 / day</span>
             </div>
             <p style="color:var(--muted); margin-top:8px">King bed • Ensuite </p>
           </div>
@@ -751,7 +852,9 @@
 
       <h3>🐾 Pet Policy</h3>
       <ul>
-        <li>Pets are not allowed.</li>
+        <li>Pets are not allowed. <br>
+However, we kindly consider allowing pets for guests with prior request and approval.
+Please contact us in advance for confirmation.</li>
         <li>There are no pets living on the property.</li>
       </ul>
 
